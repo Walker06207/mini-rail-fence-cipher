@@ -1,0 +1,17 @@
+{
+  "name": "mini-rail-fence-cipher",
+  "version": "0.1.0",
+  "description": "Rail fence cipher implementation that encrypts and decrypts text using a zigzag rail pattern.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {}
+}
