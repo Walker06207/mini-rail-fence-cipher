@@ -25,3 +25,10 @@ This is a small, dependency-free implementation of the rail fence cipher for any
 The cipher operates on UTF-16 code units, not grapheme clusters. For ASCII input this is invisible, but characters outside the Basic Multilingual Plane (emoji and some other scripts) are represented as surrogate pairs and can be split across rails during enciphering. Deciphering always reconstructs the original string because the surrogate halves are reassembled in their original order, but intermediate ciphertext may contain unpaired surrogates. If you need grapheme-safe behaviour, segment your text before passing it in.
 
 Empty strings and single characters are handled and round-trip cleanly. When the rail count equals or exceeds the text length, the zigzag only climbs, so the ciphertext is identical to the plaintext.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
